@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Trading</title>
+</head>
+<body>
+    <h1>Welcome to Stock Trading!</h1>
+    <button id="buyButton" onclick="buyStock()">Buy</button>
+
+    <script>
+        function buyStock() {
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/stock/buy", true);
+            xhr.onreadystatechange = function() {
+                if (xhr.readyState === XMLHttpRequest.DONE) {
+                    if (xhr.status === 200) {
+                        // Display success message
+                        alert(xhr.responseText);
+                    } else {
+                        // Display error message
+                        alert(xhr.responseText);
+                    }
+                }
+            };
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
